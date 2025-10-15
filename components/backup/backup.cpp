@@ -46,7 +46,7 @@ void Backup::handleRequest(AsyncWebServerRequest *request) {
 #if defined(USE_ESP_IDF) && ESPHOME_VERSION_CODE >= VERSION_CODE(2025, 7, 0)
   auto *response = request->beginResponse(200, "plain/text;charset=UTF-8", ESPHOME_BACKUP_DATA, ESPHOME_BACKUP_SIZE);
 #else
-  auto *response = request->beginResponse_P(200, "plain/text;charset=UTF-8", ESPHOME_BACKUP_DATA, ESPHOME_BACKUP_SIZE);
+  auto *response = request->beginResponse(200, "plain/text;charset=UTF-8", ESPHOME_BACKUP_DATA, ESPHOME_BACKUP_SIZE);
 #endif
   response->addHeader("Content-Encoding", "gzip");
   request->send(response);
